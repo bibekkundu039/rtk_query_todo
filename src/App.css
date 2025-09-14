@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   box-sizing: border-box;
 }
 
@@ -31,11 +31,12 @@ html {
   text-align: center;
   margin: 2rem 0;
   font-size: 1.4rem;
+  font-weight: 800;
 }
 
 .todo-container {
   width: 40rem;
-  height: 50vh;
+  height: 60vh;
   margin: 0 auto;
   overflow-y: auto;
   background-color: #fff;

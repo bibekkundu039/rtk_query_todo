@@ -9,43 +9,39 @@ import {
   TableRow,
 } from "../ui/table";
 import { MdDeleteForever } from "react-icons/md";
-import {
-  useDeleteTaskMutation,
-  useGetTasksQuery,
-  useUpdateTaskMutation,
-} from "../../api/taskApiSclice";
+
 import { Checkbox } from "../ui/checkbox";
 
-const Todo = () => {
-  // const [checked, setChecked] = useState(false);
-  const { data, isLoading, isError, isFetching } = useGetTasksQuery();
-  const [deleteTask] = useDeleteTaskMutation();
-  const [updateTask] = useUpdateTaskMutation();
-
-  const handleDeleteTask = async (id) => {
-    try {
-      await deleteTask(id).unwrap();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleUpdateTask = async (id, checked) => {
-    console.log({ id, checked });
-    try {
-      await updateTask({ id, checked }).unwrap();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+const Todo = ({
+  data,
+  isLoading,
+  isDeleting,
+  handleDeleteTask,
+  handleDeleteAll,
+  handleUpdateTask,
+}) => {
   return (
     <>
-      {isLoading ? (
+      {isLoading || isDeleting ? (
         <h1 style={{ textAlign: "center" }}>Loading...</h1>
       ) : (
         <Table>
-          {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
+          {data?.length === 0 && (
+            <TableCaption className="h-10">
+              <h1 style={{ textAlign: "center", color: "red" }}>
+                No Task Found
+              </h1>
+            </TableCaption>
+          )}
+          {data?.length !== 0 && (
+            <TableCaption className="h-10">
+              <button
+                className="bg-red-600 px-4 py-2 text-white rounded-sm cursor-pointer"
+                onClick={() => handleDeleteAll(data)}>
+                {isDeleting ? "Clearing..." : "Clear All"}
+              </button>
+            </TableCaption>
+          )}
           <TableHeader className="">
             <TableRow className="">
               <TableHead> </TableHead>
