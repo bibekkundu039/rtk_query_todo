@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Urbanist", sans-serif;
+  font-size: 80%;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #6708c7;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.4rem;
+}
+
+.todo-container {
+  width: 40rem;
+  height: 50vh;
+  margin: 0 auto;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  input {
+    width: 80%;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #ebedee;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+  }
+
+  button {
+    width: 20%;
+    padding: 1rem 2rem;
+  }
+}
