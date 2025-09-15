@@ -36,7 +36,20 @@ html {
 
 .todo-container {
   width: 40rem;
-  height: 60vh;
+  height: auto;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 2rem 2rem 1rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-details-container {
+  width: 40rem;
+  height: auto;
   margin: 0 auto;
   overflow-y: auto;
   background-color: #fff;
@@ -46,6 +59,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .todo-form {
@@ -71,4 +85,9 @@ html {
     width: 20%;
     padding: 1rem 2rem;
   }
+}
+
+.todo-list {
+  height: 45vh;
+  overflow-y: auto;
 }

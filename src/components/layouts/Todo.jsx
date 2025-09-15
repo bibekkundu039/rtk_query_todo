@@ -19,13 +19,14 @@ const Todo = ({
   handleDeleteTask,
   handleDeleteAll,
   handleUpdateTask,
+  handleTaskDetail,
 }) => {
   return (
     <>
       {isLoading || isDeleting ? (
         <h1 style={{ textAlign: "center" }}>Loading...</h1>
       ) : (
-        <Table>
+        <Table className="overflow-scroll">
           {data?.length === 0 && (
             <TableCaption className="h-10">
               <h1 style={{ textAlign: "center", color: "red" }}>
@@ -33,15 +34,7 @@ const Todo = ({
               </h1>
             </TableCaption>
           )}
-          {data?.length !== 0 && (
-            <TableCaption className="h-10">
-              <button
-                className="bg-red-600 px-4 py-2 text-white rounded-sm cursor-pointer"
-                onClick={() => handleDeleteAll(data)}>
-                {isDeleting ? "Clearing..." : "Clear All"}
-              </button>
-            </TableCaption>
-          )}
+
           <TableHeader className="">
             <TableRow className="">
               <TableHead> </TableHead>
@@ -63,7 +56,11 @@ const Todo = ({
                     }
                   />
                 </TableCell>
-                <TableCell className="font-medium">{task.id}</TableCell>
+                <TableCell
+                  className="font-medium text-blue-600 cursor-pointer"
+                  onClick={() => handleTaskDetail(task.id)}>
+                  {task.id}
+                </TableCell>
                 <TableCell>{task.title}</TableCell>
                 <TableCell className="text-right ">
                   <button

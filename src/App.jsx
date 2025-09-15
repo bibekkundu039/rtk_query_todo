@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import "./App.css";
 
 import Todo from "./components/layouts/Todo";
-import { useAddTaskMutation } from "./api/taskApiSclice";
+import { useAddTaskMutation, useDetailsTaskQuery } from "./api/taskApiSclice";
 import {
   useDeleteTaskMutation,
   useGetTasksQuery,
   useUpdateTaskMutation,
 } from "./api/taskApiSclice";
+import DetailsTask from "./components/layouts/DetailsTask";
 
 const App = () => {
   const [title, setTitle] = useState("");
+  const [taskId, setTaskId] = useState(null);
 
   /**
    * RTK Query hooks
@@ -75,6 +77,11 @@ const App = () => {
     }
   };
 
+  const handleTaskDetail = async (id) => {
+    setTaskId(id);
+    // console.log(id);
+  };
+
   return (
     <>
       <div className="container">
@@ -106,9 +113,27 @@ const App = () => {
               handleDeleteAll={handleDeleteAll}
               handleDeleteTask={handleDeleteTask}
               handleUpdateTask={handleUpdateTask}
+              handleTaskDetail={handleTaskDetail}
             />
           </div>
+          <div className="todo-footer flex justify-end mt-2">
+            {data?.length !== 0 && (
+              <div className="h-10">
+                <button
+                  className="text-[12px] bg-red-600 px-4 py-1 text-white rounded-sm cursor-pointer"
+                  onClick={() => handleDeleteAll(data)}>
+                  {isDeleting ? "Clearing..." : "Clear All"}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
+        {/* <DetailsTask id={taskId} /> */}
+        {taskId !== null && (
+          <div className="todo-details-container">
+            <DetailsTask id={taskId} />
+          </div>
+        )}
       </div>
     </>
   );

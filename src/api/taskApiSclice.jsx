@@ -37,6 +37,11 @@ export const taskApi = createApi({
       }),
       invalidatesTags: ["Task"],
     }),
+
+    detailsTask: builder.query({
+      query: (id) => `/tasks/${id}`,
+      providesTags: ["Task"],
+    }),
   }),
 });
 
@@ -45,4 +50,5 @@ export const {
   useAddTaskMutation,
   useDeleteTaskMutation,
   useUpdateTaskMutation,
+  useDetailsTaskQuery,
 } = taskApi;
